@@ -1,0 +1,12 @@
+.contain-box{
+  width: 1200px;
+  margin: 0 auto;
+  height: auto;
+}
+
+@media screen and (max-width: 1200px) {
+  .contain-box{
+    min-width: 100%;
+    margin: 0 auto;
+  }
+}

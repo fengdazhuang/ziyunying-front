@@ -1,0 +1,83 @@
+<div class="main-page">
+				<div class="search-box">
+					<div class="status-wrapper">
+						<div class="all-status">
+							<span class="words-label">文章状态</span>
+							<span :class="['words-status', articleStatusType == 0 ? 'status-selected' : 'status-default']" @click="queryByType(0)">全部</span>
+							<span :class="['words-status', articleStatusType == 3 ? 'status-selected' : 'status-default']" @click="queryByType(3)">已发布</span>
+							<span :class="['words-status', articleStatusType == 12 ? 'status-selected' : 'status-default']" @click="queryByType(12)">审核中</span>
+							<span :class="['words-status', articleStatusType == 4 ? 'status-selected' : 'status-default']" @click="queryByType(4)">未通过</span>
+							<span :class="['words-status', articleStatusType == 5 ? 'status-selected' : 'status-default']" @click="queryByType(5)">已撤回</span>
+
+						</div>
+						<div class="search-me">
+							<div class="search-wrapper">
+								<input type="test" v-model="searchContent" placeholder="请输入搜索关键字" class="search-input" @keyup.enter="submitSearch"/>
+								<!-- <span class="search-btn">搜索</span> -->
+								<span class="search-ico-wrapper">
+									<img src="./img/icon-search.png" class="search-ico" @click="submitSearch"/>
+								</span>
+							</div>
+						</div>
+					</div>
+					<div class="time-choose">
+						<div class="words-label">时间选择</div>
+						<div>
+							<input type="text" class="input-date-picker" placeholder="开始日期 ~ 结束日期" id="choose-date">
+						</div>
+					</div>
+				</div>
+
+				<div id="article-list-wrapper" class="article-list-wrapper">
+					<div class="article-list">
+
+						<div class="every-article" v-for="(article, index) in articleList" :key="index">
+							<img :src="article.articleCover" style="width: 175px; height: 125px;" v-show="article.articleType==1"/>
+
+							<div class="main-content">
+								<div class="basic-info">
+									<span><a href="javascript:void(0);" target="_blank" class="article-link">{{article.title}}</a></span>
+									<span class="counts-wrapper">
+										<!-- TODO: 数字待定，后续做 -->
+										<span>阅读 0 ⋅</span>
+										<span>评论 0</span>
+									</span>
+									<span class="status-reviewing article-status" v-show="article.articleStatus==1 || article.articleStatus==2">审核中</span>
+									<span class="status-published article-status" v-show="article.articleStatus==3">已发布</span>
+									<span class="status-fail article-status" v-show="article.articleStatus==4">审核未通过</span>
+									<span class="status-back article-status" v-show="article.articleStatus==5">已撤回</span>
+									<span class="publish-time">
+										<span v-show="article.isAppoint==1">预计发布时间：</span>
+										{{formatData(article.publishTime)}}
+									</span>
+								</div>
+								<div class="operation">
+									<!-- <a href="javascript:void(0);" style="margin-top: 15px;">
+										<img src="./img/icon-pen.png" class="oper-icon"/>
+										<span class="oper-words">修改</span>
+									</a> -->
+									<a href="javascript:void(0);" style="margin-top: 8px;" @click="withdraw(article.id)" v-show="article.articleStatus==3">
+										<img src="./img/icon-back.png" class="oper-icon"/>
+										<span class="oper-words">撤回</span>
+									</a>
+									<a href="javascript:void(0);" style="margin-top: 8px;" @click="deleteArticle(article.id)" >
+										<img src="./img/icon-delete.png" class="oper-icon"/>
+										<span class="oper-words">删除</span>
+									</a>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+					<!-- 分页 start-->
+					<div class="wrap" id="wrap">
+						<zpagenav v-bind:page="page" v-bind:page-size="pageSize" v-bind:total="total"
+							v-bind:max-page="maxPage"  v-on:pagehandler="doPaging">
+						</zpagenav>
+					</div>
+					<!-- 分页 end-->
+
+				</div>
+
+			</div>
