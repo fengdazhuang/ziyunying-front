@@ -14,8 +14,6 @@ module.exports = {
       '/api': {
         //本地服务接口地址
         target: 'http://localhost:9001',
-        //远程演示服务地址,可用于直接启动项目
-        // target: 'http://120.79.17.80:8089',
         changeOrigin: true,
         pathRewrite: {
           '^/api': '/'
@@ -61,7 +59,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/ud/',
+    assetsPublicPath: './',
 
     /**
      * Source Maps

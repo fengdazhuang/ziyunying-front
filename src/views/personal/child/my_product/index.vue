@@ -7,8 +7,8 @@
           <div class="order-panel">
             <ul class="nav user-nav__title" role="tablist">
               <li role="presentation" :class="'nav-item '+(status === 0?'active':'')" @click="queryByStatus(0)"><a>所有商品</a></li>
-              <li role="presentation" :class="'nav-item '+(status === 1?'active':'')" @click="queryByStatus(1)"><a>已上架 <span class="cr">0</span></a></li>
-              <li role="presentation" :class="'nav-item '+(status === 2?'active':'')" @click="queryByStatus(2)"><a>已下架 <span class="cr">0</span></a></li>
+              <li role="presentation" :class="'nav-item '+(status === 1?'active':'')" @click="queryByStatus(1)"><a>已上架 <span class="cr"></span></a></li>
+              <li role="presentation" :class="'nav-item '+(status === 2?'active':'')" @click="queryByStatus(2)"><a>已下架 <span class="cr"></span></a></li>
             </ul>
             <div class="tab-content">
               <div class="tab-pane fade active in" id="all">
@@ -31,7 +31,7 @@
                           {{ product.createdTime }} 商品编号: {{ product.productId }}
                         </a>
                         <div class="card">
-                          <div class="img"><img :src="require('../../../../../public/img/ud/product/item-img_1.jpg')" alt="" class="cover"></div>
+                          <div class="img"><img :src="require('../../../../../public/img/ud/S-007.jpg')" alt="" class="cover"></div>
                           <div class="name ep2">{{ product.name }}<br><br></div>
                           <div class="format">分类：{{ product.classification }}<br><br>规格：{{ product.specifications }}</div>
 <!--                          <div class="favour">使用优惠券：优惠¥2.00</div>-->
@@ -57,8 +57,8 @@
 <!--                      <div class="del">-->
 <!--                        <i class="el-icon-delete"></i>-->
 <!--                      </div>-->
-                      <a v-if="product.status===1" class="but but-primary" @click="toPay">下架商品</a>
-                      <a v-if="product.status===2" class="but but-primary" @click="receipt">重新上架</a>
+                      <a v-if="product.status===1" class="but but-primary" @click="downProduct(product.productId)">下架商品</a>
+                      <a v-if="product.status===2" class="but but-primary" @click="rePublish(product.productId)">重新上架</a>
                     </td>
                   </tr>
                   </tbody>
@@ -145,14 +145,23 @@ import {getPage,add,getDetail,updateStatus,del,updatePassword} from '@/api/user'
           this.loading = false;
         })
       },
-      selTab(index){
-        this.tabIndex = index;
+      rePublish(id){
+        this.updateProductStatus(id,1)
+      },
+      downProduct(id){
+        this.updateProductStatus(id,2)
+      },
+      updateProductStatus(id,status){
+        updateStatus({id:id,status:status}).then(res => {
+          if(res.status === 200){
+            this.getData();
+          }
+        },error => {
+          this.loading = false;
+        })
       },
       productDetail(id){//商品详情
         this.$router.push({path: '/product/detail',query:{productId:id}});
-      },
-      toPay(){//订单支付
-        this.$router.push({path: '/pay'});
       },
       receipt(){//确认收货
         this.$router.push({path: '/personal/receipt'});

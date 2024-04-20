@@ -6,46 +6,17 @@
         <div class="shop-title">收货地址</div>
         <form class="shopcart-form__box">
           <div class="addr-radio">
-            <div :class="'radio-line radio-box '+(radio1 === '1'?'active':'') " @click="selAddr('1')">
-              <label class="radio-label ep" title="福建省 福州市 鼓楼区 温泉街道 五四路159号世界金龙大厦20层B北 福州rpg.blue网络 （喵喵喵 收） 153****9999">
+            <div :class="'radio-line radio-box '+(radio1 === '1'?'active':'') " v-for="addr in addrList" @click="selAddr('1')">
+              <label class="radio-label ep"  title="福建省 福州市 鼓楼区 温泉街道 五四路159号世界金龙大厦20层B北 福州rpg.blue网络 （喵喵喵 收） 153****9999">
                 <el-radio v-model="radio1" label="1">&nbsp;</el-radio>
-                福建省 福州市 鼓楼区 温泉街道
-                五四路159号世界金龙大厦20层B北 福州rpg.blue网络
-                （喵喵喵 收） 153****9999
-              </label>
+                {{ addr.province }} {{addr.city}}{{addr.county}}{{addr.detailedAddr+"  "}}
+
+                （{{addr.receiverName}} 收） {{addr.receiverPhone}}
+              </label><br>
               <a class="default">默认地址</a>
               <a class="edit" @click="editAddr">修改</a>
             </div>
-            <div :class="'radio-line radio-box '+(radio1 === '2'?'active':'') " @click="selAddr('2')">
-              <label class="radio-label ep" title="福建省 福州市 鼓楼区 温泉街道 五四路159号世界金龙大厦20层B北 福州rpg.blue网络 （taroxd 收） 153****9999">
-                <el-radio v-model="radio1" label="2">&nbsp;</el-radio>
-                福建省 福州市 鼓楼区 温泉街道
-                五四路159号世界金龙大厦20层B北 福州rpg.blue网络
-                （taroxd 收） 153****9999
-              </label>
-              <a class="default">设为默认地址</a>
-              <a class="edit" @click="editAddr">修改</a>
-            </div>
-            <div :class="'radio-line radio-box '+(radio1 === '3'?'active':'') " @click="selAddr('3')">
-              <label class="radio-label ep" title="福建省 福州市 鼓楼区 温泉街道 五四路159号世界金龙大厦20层B北 福州rpg.blue网络 （喵污喵⑤ 收） 153****9999">
-                <el-radio v-model="radio1" label="3">&nbsp;</el-radio>
-                福建省 福州市 鼓楼区 温泉街道
-                五四路159号世界金龙大厦20层B北 福州rpg.blue网络
-                （喵污喵⑤ 收） 153****9999
-              </label>
-              <a class="default">设为默认地址</a>
-              <a class="edit" @click="editAddr">修改</a>
-            </div>
-            <div :class="'radio-line radio-box '+(radio1 === '4'?'active':'') " @click="selAddr('4')">
-              <label class="radio-label ep" title="福建省 福州市 鼓楼区 温泉街道 五四路159号世界金龙大厦20层B北 福州rpg.blue网络 （浴巾打码女 收） 153****9999">
-                <el-radio v-model="radio1" label="4">&nbsp;</el-radio>
-                福建省 福州市 鼓楼区 温泉街道
-                五四路159号世界金龙大厦20层B北 福州rpg.blue网络
-                （浴巾打码女 收） 153****9999
-              </label>
-              <a class="default">设为默认地址</a>
-              <a class="edit" @click="editAddr">修改</a>
-            </div>
+
           </div>
           <div class="add_addr">
             <a @click="editAddr">添加新地址</a>
@@ -110,21 +81,21 @@
             </div>
             <div class="pull-right text-right">
               <div class="form-group">
-                <label class="control-label">优惠券使用：</label>
-                <select id="coupon">
-                  <option value="-1" selected="">- 请选择可使用的优惠券 -</option>
-                  <option value="1">【满￥20.0元减￥2.0】</option>
-                  <option value="2">【满￥30.0元减￥2.0】</option>
-                  <option value="3">【满￥25.0元减￥1.0】</option>
-                  <option value="4">【满￥10.0元减￥1.5】</option>
-                  <option value="5">【满￥15.0元减￥1.5】</option>
-                  <option value="6">【满￥20.0元减￥1.0】</option>
-                </select>
+<!--                <label class="control-label">优惠券使用：</label>-->
+<!--                <select id="coupon">-->
+<!--                  <option value="-1" selected="">- 请选择可使用的优惠券 -</option>-->
+<!--                  <option value="1">【满￥20.0元减￥2.0】</option>-->
+<!--                  <option value="2">【满￥30.0元减￥2.0】</option>-->
+<!--                  <option value="3">【满￥25.0元减￥1.0】</option>-->
+<!--                  <option value="4">【满￥10.0元减￥1.5】</option>-->
+<!--                  <option value="5">【满￥15.0元减￥1.5】</option>-->
+<!--                  <option value="6">【满￥20.0元减￥1.0】</option>-->
+<!--                </select>-->
               </div>
-              <div class="info-line">优惠活动：<span class="c6">无</span></div>
+<!--              <div class="info-line">优惠活动：<span class="c6">无</span></div>-->
               <div class="info-line">运费：<span class="c6">¥0.00</span></div>
-              <div class="info-line"><span class="favour-value">已优惠 ¥2.0</span>合计：<b class="fz18 cr">¥18.0</b></div>
-              <div class="info-line fz12 c9">（可获 <span class="c6">20</span> 积分）</div>
+<!--              <div class="info-line"><span class="favour-value">已优惠 ¥2.0</span>合计：<b class="fz18 cr">¥18.0</b></div>-->
+<!--              <div class="info-line fz12 c9">（可获 <span class="c6">20</span> 积分）</div>-->
             </div>
           </div>
 
@@ -133,7 +104,7 @@
             <div :class="'radio-line radio-box '+(radio2 === '1'?'active':'') " @click="selPayMethod('1')">
               <label class="radio-label ep">
                 <el-radio v-model="radio2" label="1">&nbsp;</el-radio>
-                <span class="fz16">余额支付</span><span class="fz14">（可用余额：¥88.0）</span>
+<!--                <span class="fz16">余额支付</span><span class="fz14">（可用余额：¥88.0）</span>-->
               </label>
               <div class="pay-value">支付<b class="fz16 cr">18.00</b>元</div>
             </div>
@@ -163,16 +134,29 @@
 </template>
 
 <script>
+  import {getAddressList} from "../../api/user";
+
   export default {
     data() {
       return {
         radio1: '1',
-        radio2: '1'
+        radio2: '1',
+        addrList:[]
       };
     },
     mounted() {
+      this.getAddressList();
     },
     methods: {
+      getAddressList(){
+        const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+        getAddressList(userInfo.id).then((res)=>{
+          if(res.status === 200){
+            this.addrList=res.data;
+          }
+        }),error => {
+        }
+      },
       selAddr(index){//切换地址
         this.radio1 = index;
       },

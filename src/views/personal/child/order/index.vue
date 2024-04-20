@@ -31,9 +31,9 @@
                           {{ item.createdTime }} 订单号: {{ item.orderId }}
                         </a>
                         <div class="card">
-                          <div class="img"><img :src="require('../../../../../public/img/ud/product/item-img_1.jpg')" alt="" class="cover"></div>
+<!--                          <div class="img"><img :src="require('../../../../../public/img/ud/product/item-img_1.jpg')" alt="" class="cover"></div>-->
                           <div class="name ep2">{{ item.productName }}</div>
-                          <div class="format">支付时间{{ item.payTime }}<br><br>备注：{{ item.orderRemark }}</div>
+                          <div class="format"><br><br>支付时间{{ item.payTime }}</div>
                         </div>
                       </label>
                     </td>
@@ -312,7 +312,7 @@
     line-height: 1.4em;
   }
   .ep2 {
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 3;
   }
   .ep2, .ep3, .ep4, .ep5 {
     display: -webkit-box;

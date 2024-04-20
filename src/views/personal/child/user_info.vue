@@ -1,4 +1,4 @@
-<template>
+sa<template>
   <div class="user-center">
     <div class="pull-right">
       <div class="user-content__box clearfix bgf">
@@ -9,24 +9,32 @@
         <form action="" class="user-setting__form" role="form">
           <div class="user-form-group">
             <label for="user-id">用户名：</label>
-            <input type="text" id="user-id" value="18759808122" placeholder="请输入您的昵称">
+            <input type="text" id="user-id" v-model="userInfo.username" placeholder="请输入您的昵称">
           </div>
           <div class="user-form-group">
             <label>身份：</label>
-            普通消费者 <a href="agent_level.html">提升</a>
+            企业商户 <a href="agent_level.html">提升</a>
           </div>
           <div class="user-form-group">
             <label>性别：</label>
-            <el-radio-group v-model="radio">
+            <el-radio-group v-model="userInfo.sex">
               <el-radio :label="1">男士</el-radio>
               <el-radio :label="2">女士</el-radio>
               <el-radio :label="3">保密</el-radio>
             </el-radio-group>
           </div>
           <div class="user-form-group">
+            <label>邮箱：</label>
+            {{ userInfo.email }}
+          </div>
+          <div class="user-form-group">
+            <label>电话：</label>
+            {{ userInfo.phone }}
+          </div>
+          <div class="user-form-group">
             <label>生日：</label>
             <el-date-picker
-              v-model="birthday"
+              v-model="userInfo.birthday"
               type="date"
               placeholder="选择日期">
             </el-date-picker>
@@ -41,16 +49,35 @@
 </template>
 
 <script>
+  import {getUserInfo} from "../../../api/user";
+
   export default {
     data() {
       return {
-        radio: 1,
-        birthday: ''
+        userInfo:{
+          username:'',
+          sex:1,
+          phone:'',
+          email:'',
+          birthday:''
+
+        }
       };
     },
     mounted() {
+      this.getUserInfo();
     },
     methods: {
+      getUserInfo(){
+        const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+        getUserInfo({id:userInfo.id}).then((res=>{
+          if(res.status===200){
+            this.userInfo=res.data;
+          }
+        })),error=>{
+
+        }
+      }
     }
   };
 </script>

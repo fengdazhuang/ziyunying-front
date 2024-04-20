@@ -25,10 +25,11 @@
             ]
           },
           {
-            name: '商品管理',
+            name: '商家管理',
             items: [
               {name:'我的商品',path:'/personal/myProduct'},
               {name:'发布商品',path:'/personal/publishProduct'},
+              {name:'确认订单',path:'/personal/makeOrder'}
             ]
           },
 
@@ -46,6 +47,7 @@
               {name:'售后服务',path:'/personal/saleService'},
               {name:'配送服务',path:'/personal/deliveryService'},
               {name:'用户协议',path:'/personal/userAgreement'},
+              {name:'我的消息',path:'/personal/myMessage'},
               {name:'常见问题',path:'/personal/commonProblem'}
             ]
           },
@@ -62,8 +64,7 @@
             name: '紫云英交易平台',
             items: [
               {name:'企业简介',path:'/personal/companyProfile'},
-              {name:'加入紫云英',path:'/personal/addShow'},
-              {name:'隐私说明',path:'/personal/privacyStatement'}
+              {name:'了解紫云英',path:'/personal/addShow'}
             ]
           },
         ]

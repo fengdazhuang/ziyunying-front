@@ -3,7 +3,7 @@
     <div style="height: 40px;background-color: #f5f5f5;">
       <div style="display: flex;" class="contain-box">
         <div class="top-title" style="padding-right: 20px;line-height: 40px;color: #666;">嗨，欢迎来到<span style="color: #b31e22;">紫云英网</span></div>
-        <div class="top-title" style="padding-right: 20px;line-height: 40px;color: #666;margin-left: 20px;" @click="toConsignmentPage">网店代销</div>
+<!--        <div class="top-title" style="padding-right: 20px;line-height: 40px;color: #666;margin-left: 20px;" @click="toConsignmentPage">网店代销</div>-->
         <div class="top-title" style="padding-right: 20px;line-height: 40px;color: #666;margin-left: 20px;" @click="toHelpPage">帮助中心</div>
         <div style="flex: 1;display: flex;">
           <div style="flex: 1;"></div>

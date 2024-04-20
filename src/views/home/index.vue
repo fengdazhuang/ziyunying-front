@@ -52,11 +52,11 @@
         <div class="scroll-none" :style="'float:right;width: 200px;background-color: #FFFFFF;height: 505px;overflow: scroll;z-index: 99999;'+(hover?'margin-top:-530px;':'margin-top:-505px;')">
           <div class="face-box" style="height: 220px;">
             <div style="text-align: center;margin-top: 32px;">
-              <img src="public/img/ud/default_avt.png" style="width: 60px;height: 60px;border-radius: 50%;">
+              <img src="../../../public/img/ud/default_avt.png" style="width: 60px;height: 60px;border-radius: 50%;">
             </div>
             <div style="height: 24px;line-height: 24px;text-align: center;color: #666;">
               Hi~
-              <span style="color: #b31e22;">18836416134</span>
+              <span style="color: #b31e22;">{{username}}</span>
             </div>
 <!--            <div style="height: 24px;line-height: 24px;text-align: center;color: #666;">-->
 <!--              积分：30-->
@@ -135,9 +135,9 @@
             种子
           </div>
           <div style="flex: 1;text-align: right;margin-right: 20px;">
-            <el-button @click="typePage" type="text" style="color: #ffffff;">高端种子</el-button>
-            <el-button @click="typePage" type="text" style="color: #ffffff;">耐寒</el-button>
-            <el-button @click="typePage" type="text" style="color: #ffffff;">耐热</el-button>
+            <el-button @click="typePage('种子')" type="text" style="color: #ffffff;">查看更多</el-button>
+<!--            <el-button @click="typePage('种子')" type="text" style="color: #ffffff;">耐寒</el-button>-->
+<!--            <el-button @click="typePage('种子')" type="text" style="color: #ffffff;">耐热</el-button>-->
 <!--            <el-button @click="typePage" type="text" style="color: #ffffff;">下装</el-button>-->
 <!--            <el-button @click="typePage" type="text" style="color: #ffffff;">裙装</el-button>-->
           </div>
@@ -173,11 +173,11 @@
             成花
           </div>
           <div style="flex: 1;text-align: right;margin-right: 20px;">
-            <el-button @click="typePage" type="text" style="color: #ffffff;">高端女装</el-button>
-            <el-button @click="typePage" type="text" style="color: #ffffff;">时尚女装</el-button>
-            <el-button @click="typePage" type="text" style="color: #ffffff;">上装</el-button>
-            <el-button @click="typePage" type="text" style="color: #ffffff;">下装</el-button>
-            <el-button @click="typePage" type="text" style="color: #ffffff;">裙装</el-button>
+            <el-button @click="typePage('成花')" type="text" style="color: #ffffff;">查看更多</el-button>
+<!--            <el-button @click="typePage('成花')" type="text" style="color: #ffffff;">时尚女装</el-button>-->
+<!--            <el-button @click="typePage('成花')" type="text" style="color: #ffffff;">上装</el-button>-->
+<!--            <el-button @click="typePage('成花')" type="text" style="color: #ffffff;">下装</el-button>-->
+<!--            <el-button @click="typePage('成花')" type="text" style="color: #ffffff;">裙装</el-button>-->
           </div>
         </div>
 
@@ -196,7 +196,7 @@
                   <div style="color: #666666;flex: 1;text-align: right">进货价</div>
                 </div>
                 <div style="color: #666666;height: 16px;line-height: 16px;overflow: hidden;text-overflow: ellipsis;">
-                  纯色圆领短袖T恤活a动衫弹力柔软纯色圆领短袖T恤活a动衫弹力柔软
+
                 </div>
               </div>
             </div>
@@ -211,11 +211,11 @@
             食品
           </div>
           <div style="flex: 1;text-align: right;margin-right: 20px;">
-            <el-button @click="typePage" type="text" style="color: #ffffff;">高端女装</el-button>
-            <el-button @click="typePage" type="text" style="color: #ffffff;">时尚女装</el-button>
-            <el-button @click="typePage" type="text" style="color: #ffffff;">上装</el-button>
-            <el-button @click="typePage" type="text" style="color: #ffffff;">下装</el-button>
-            <el-button @click="typePage" type="text" style="color: #ffffff;">裙装</el-button>
+            <el-button @click="typePage('食品')" type="text" style="color: #ffffff;">查看更多</el-button>
+<!--            <el-button @click="typePage('食品')" type="text" style="color: #ffffff;">时尚女装</el-button>-->
+<!--            <el-button @click="typePage('食品')" type="text" style="color: #ffffff;">上装</el-button>-->
+<!--            <el-button @click="typePage('食品')" type="text" style="color: #ffffff;">下装</el-button>-->
+<!--            <el-button @click="typePage('食品')" type="text" style="color: #ffffff;">裙装</el-button>-->
           </div>
         </div>
 
@@ -234,7 +234,7 @@
                   <div style="color: #666666;flex: 1;text-align: right">进货价</div>
                 </div>
                 <div style="color: #666666;height: 16px;line-height: 16px;overflow: hidden;text-overflow: ellipsis;">
-                  纯色圆领短袖T恤活a动衫弹力柔软纯色圆领短袖T恤活a动衫弹力柔软
+
                 </div>
               </div>
             </div>
@@ -249,11 +249,11 @@
             药品
           </div>
           <div style="flex: 1;text-align: right;margin-right: 20px;">
-            <el-button @click="typePage" type="text" style="color: #ffffff;">高端女装</el-button>
-            <el-button @click="typePage" type="text" style="color: #ffffff;">时尚女装</el-button>
-            <el-button @click="typePage" type="text" style="color: #ffffff;">上装</el-button>
-            <el-button @click="typePage" type="text" style="color: #ffffff;">下装</el-button>
-            <el-button @click="typePage" type="text" style="color: #ffffff;">裙装</el-button>
+            <el-button @click="typePage('药品')" type="text" style="color: #ffffff;">查看更多</el-button>
+<!--            <el-button @click="typePage('药品')" type="text" style="color: #ffffff;">时尚女装</el-button>-->
+<!--            <el-button @click="typePage('药品')" type="text" style="color: #ffffff;">上装</el-button>-->
+<!--            <el-button @click="typePage('药品')" type="text" style="color: #ffffff;">下装</el-button>-->
+<!--            <el-button @click="typePage('药品')" type="text" style="color: #ffffff;">裙装</el-button>-->
           </div>
         </div>
 
@@ -272,7 +272,7 @@
                   <div style="color: #666666;flex: 1;text-align: right">进货价</div>
                 </div>
                 <div style="color: #666666;height: 16px;line-height: 16px;overflow: hidden;text-overflow: ellipsis;">
-                  纯色圆领短袖T恤活a动衫弹力柔软纯色圆领短袖T恤活a动衫弹力柔软
+
                 </div>
               </div>
             </div>
@@ -291,6 +291,7 @@
   export default {
       data() {
         return {
+           username:'',
            input:'',
            hover: true,
            imgs: [
@@ -300,11 +301,11 @@
            ],
           productImgs:[],
           imgsOfProduct: [
-            require('../../../public/img/ud/S-001.jpg'),
-            require('../../../public/img/ud/S-002.jpg'),
-            require('../../../public/img/ud/S-003.jpg'),
-            require('../../../public/img/ud/S-004.jpg'),
-            require('../../../public/img/ud/S-005.jpg'),
+            require('../../../public/img/ud/S-006.jpg'),
+            require('../../../public/img/ud/S-007.jpg'),
+            require('../../../public/img/ud/S-008.jpg'),
+            require('../../../public/img/ud/S-009.jpg'),
+            require('../../../public/img/ud/S-010.jpg'),
           ],
            products: [
              {name:'荣耀笔记本MagicBook V 14',des:'超大容量，超级高清，超级速度',url:'https://www.wantongdiannao.com/upload/goods/1786/17180525093_175_175.jpg'},
@@ -325,10 +326,11 @@
         };
       },
       mounted() {
+        this.username=JSON.parse(localStorage.getItem("userInfo")).username
       },
       methods: {
-        typePage(){
-          this.$router.push({path: '/type/index'});
+        typePage(classification){
+          this.$router.push({path: '/type/index',query:{classification:classification}});
         },
         detailPage(id){
           this.$router.push({path: '/product/detail',query:{productId:id}});

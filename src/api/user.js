@@ -25,6 +25,16 @@ export const userLogout = () =>{
   })
 }
 
+export const getUserInfo = (params) =>{
+  return request({
+    url: '/api/user/getUserInfo',
+    method: 'get',
+    params: params
+  })
+}
+
+
+
 /**
  * 分页
  */

@@ -5,7 +5,7 @@
           <div style="margin: 20px 0;">
             <el-breadcrumb separator=">">
               <el-breadcrumb-item :to="{ path: '/home/index' }">首页</el-breadcrumb-item>
-              <el-breadcrumb-item :to="{ path: '/type/index' }">爆款推荐</el-breadcrumb-item>
+              <el-breadcrumb-item :to="{ path: '/type/index' }">商品详情</el-breadcrumb-item>
               <el-breadcrumb-item><span style="color: #b31e22;">{{ productAll.name }}</span></el-breadcrumb-item>
             </el-breadcrumb>
           </div>
@@ -30,6 +30,15 @@
                   <span style="font-size: 24px;color: #d00;">￥{{ productAll.price }}</span>
 <!--                  <span style="font-size: 16px;color: #999;text-decoration: line-through;">￥29.20</span>-->
                 </div>
+
+                <div style="height: 40px;">
+                  <span>商家：</span>
+                  <span style="font-size: 24px;color: #d00;">{{ productAll.publisherName }}</span>
+                  <el-button type="primary" @click="toChat(productAll.publisherId)">去聊聊</el-button>
+                  <!--                  <span style="font-size: 16px;color: #999;text-decoration: line-through;">￥29.20</span>-->
+                </div>
+
+
               </div>
               <div style="border: 1px dotted #ccc;height: 46px;margin: 20px 0;display: flex;line-height: 46px;">
                 <div style="width: 33.3%;text-align: center;">
@@ -140,6 +149,9 @@
       this.getProductDetail(productId);
     },
     methods: {
+      toChat(publisherId){
+        this.$router.push({path: '/chat',query:{publisherId:publisherId}});
+      },
       getProductDetail(productId){
         getDetail(productId).then((res)=>{
           if(res.status === 200){

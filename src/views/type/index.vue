@@ -73,21 +73,19 @@
     <div>
       <div class="product-box" v-for="(item,index) in products" @click="detailPage(item.productId)">
         <div style="text-align: center;">
-          <el-image :src="item.img" style=""></el-image>
+          <el-image :src="require('../../../public/img/ud/S-007.jpg')" style=""></el-image>
         </div>
         <div class="product-name" style="color: #666;font-size: 14px;margin: 0 8px;padding: 5px 5px;background-color: rgba(208,208,208,0.5)">
           {{item.productName}}
         </div>
         <div style="line-height: 40px;color: #b31e22;font-size: 16px;margin-left: 10px;font-weight: bolder;">
-          ¥{{item.price}}
+          价格¥{{item.price}}
         </div>
         <div style="display: flex;">
           <div style="width: 33.3%;margin-left: 10px;color: #666666;">
             销量{{item.saleNum}}
           </div>
-          <div style="width: 33.3%;color: #666666;">
-            人气{{item.hot}}
-          </div>
+
           <div style="width: 33.3%;text-align: right;margin-right: 8px;color: #666666;">
             评论{{item.commentNum}}
           </div>
@@ -157,6 +155,15 @@
         };
       },
       mounted() {
+        var res=this.$route.query.classification;
+        this.classification=res;
+        var i=0;
+        for (var key in this.claList) {
+          if (key===this.classification) {
+            this.claIndex=i;
+          }
+          i++;
+        }
         this.getData();
       },
       methods: {

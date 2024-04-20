@@ -8,10 +8,10 @@
             <a class="edit"><i class="el-icon-edit-outline"></i></a>
           </div>
           <div>
-            <p class="name text-nowrap">您好，18759808122！</p>
+            <p class="name text-nowrap">您好，{{ userInfo.username }}！</p>
 <!--            <p class="money text-nowrap">余额：¥88.0</p>-->
 <!--            <p class="identity text-nowrap">普通消费者</p>-->
-            <p class="level text-nowrap">身份：普通消费者 <a>提升</a></p>
+            <p class="level text-nowrap">身份：企业商户 <a>提升</a></p>
           </div>
         </div>
         <div class="pull-right user-nav">
@@ -38,7 +38,7 @@
       <div class="order-list__div bgf">
         <div class="user-title">
           我的订单<span class="c6">（显示最新三条）</span>
-          <a class="pull-right">查看所有订单&gt;</a>
+          <a class="pull-right" @click="toMyOrder">查看所有订单&gt;</a>
         </div>
         <div class="order-panel">
           <ul class="nav user-nav__title" role="tablist">
@@ -391,15 +391,40 @@
 </template>
 
 <script>
+  import {getUserInfo} from "../../../api/user";
+
   export default {
     data() {
       return {
+        userInfo:{
+          username:'',
+          sex:1,
+          phone:'',
+          email:'',
+          birthday:''
+
+        },
         orderIndex: 0
       };
     },
     mounted() {
+      this.getUserInfo();
     },
     methods: {
+      getUserInfo(){
+        const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+        getUserInfo({id:userInfo.id}).then((res=>{
+          if(res.status===200){
+            this.userInfo=res.data;
+          }
+        })),error=>{
+
+        }
+      },
+      toMyOrder(){
+        this.$router.push({path: '/personal/order'});
+      },
+
       selOrder(index){//切换订单列表
         this.orderIndex = index;
       },

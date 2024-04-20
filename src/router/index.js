@@ -111,6 +111,7 @@ export default new Router({
       component: () => import('@/views/car/index'),
       hidden: true
     },
+
     {
       path: '/personal',
       component: LayoutPersonal,
@@ -166,6 +167,11 @@ export default new Router({
         component: () =>
           import( /* webpackChunkName: "views" */ '@/views/personal/child/my_product/publish_product')
       },{
+        path: 'makeOrder',
+        name: '确认订单',
+        component: () =>
+          import( /* webpackChunkName: "views" */ '@/views/personal/child/my_product/make_order')
+      },{
         path: 'order',
         name: '我的订单',
         component: () =>
@@ -210,7 +216,16 @@ export default new Router({
         name: '服务中心-售后服务',
         component: () =>
           import( /* webpackChunkName: "views" */ '@/views/personal/child/sale_service')
+      }, {
+        path: 'myMessage',
+        name: '服务中心-我的消息',
+        component: () =>
+          import( /* webpackChunkName: "views" */ '@/views/personal/child/my_message/index')
       },{
+        path: '/chat',
+        component: () =>
+          import( /* webpackChunkName: "page" */ '@/views/personal/child/my_message/chat')
+      }, {
         path: 'deliveryService',
         name: '服务中心-配送服务',
         component: () =>

@@ -114,7 +114,7 @@
             ? (this.passwordType = "password")
             : (this.passwordType = "");
         },
-        handleLogin() {
+        handleLogin2() {
           let that = this;
           that.$refs.loginForm.validate(valid => {
             if (valid) {
@@ -140,7 +140,7 @@
             }
           });
         },
-        handleLogin2() {//请求后端 真实登录
+        handleLogin() {//请求后端 真实登录
           let that = this;
           that.$refs.loginForm.validate(valid => {
             if (valid) {

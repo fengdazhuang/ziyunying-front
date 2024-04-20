@@ -166,10 +166,22 @@
           this.$router.push({path: '/login'});
         },
         toWel(){
-          this.$router.push({path: '/personal/wel'});
+          const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+          if(userInfo!=null){
+            this.$router.push({path: '/personal/wel'});
+          }else{
+            this.$router.push({path: '/login'});
+          }
+
         },
         toOrder(){
-          this.$router.push({path: '/personal/order'});
+          const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+          if(userInfo!=null){
+            this.$router.push({path: '/personal/order'});
+          }else{
+            this.$router.push({path: '/login'});
+          }
+
         },
         toIntegral(){
           this.$router.push({path: '/personal/integral'});
